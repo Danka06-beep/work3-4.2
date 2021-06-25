@@ -1,33 +1,29 @@
 package com.company;
 
-public class CheckingAccount extends Account implements iAdd, iTransfer, iPay,Score{
+public class CheckingAccount extends Account {
 
     public CheckingAccount(int amount, int balance) {
         super(amount, balance);
     }
-
     void pay (int amount){
-        balance = balance - amount;
+        if (this.balance >= amount) {
+            super.pay(amount);
+        } else {
+            System.out.println("Недостаточно средств");
+        }
     }
     void transfer(Account account, int amount){
-        account.addMoney(amount);
+        if (this.balance - amount >= 0) {
+            super.transfer(account,amount);
+        } else {
+            System.out.println("Недостаточно средств для перевода");
+        }
     }
     void addMoney(int amount){
-        balance = balance + amount;
-    }
-
-    public void Score() {
-    }
-    @Override
-    public void PutMoney() {
-
-    }
-
-    @Override
-    public void ToPay() {
-    }
-    @Override
-    public void TransferAccount() {
-
+        if (this.balance + amount >= 0) {
+            super.addMoney(amount);
+        } else {
+            System.out.println("Баланс не может быть отрицательным");
+        }
     }
 }

@@ -3,14 +3,11 @@ package com.company;
 public class Main {
 
     public static void main(String[] args) {
-        CheckingAccount check = new CheckingAccount(1,900);
-        Account account = new Account (2,123);
-        SavingsAccount saving = new SavingsAccount(3,987);
+        CheckingAccount check = new CheckingAccount(2,900);
+        CreditAccount credit = new CreditAccount(2,441);
 
-account.addMoney(10);
-account.transfer(saving,34);
-account.pay(300);
+check.pay(123);
+check.addMoney(345);
+credit.transfer(check,4);
 
-
-    }
-}
+    }}
